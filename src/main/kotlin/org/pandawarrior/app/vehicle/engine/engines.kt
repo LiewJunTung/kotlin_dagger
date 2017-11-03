@@ -13,14 +13,11 @@ class BadEngine : Engine {
         }
 
         val fuelQuality = fuelInjector.injectFuel()
-        if (fuelQuality > 70) {
-            return "Starting Engine: It can travel very very fast and far"
-        } else if (fuelQuality > 40) {
-            return "Starting Engine: It can travel fast and far"
-        } else if (fuelQuality > 0) {
-            return "Starting Engine: It can travel in normal speed and distance"
-        } else {
-            return "Engine can't start: No fuel"
+        when {
+            fuelQuality > 70 -> return "Starting Engine: It can travel very very fast and far"
+            fuelQuality > 40 -> return "Starting Engine: It can travel fast and far"
+            fuelQuality > 0 -> return "Starting Engine: It can travel in normal speed and distance"
+            else -> return "Engine can't start: No fuel"
         }
     }
 
@@ -36,19 +33,12 @@ class GoodEngine @Inject constructor(val fuelInjector: FuelInjector?) : Engine {
         if (fuelInjector == null) {
             return "Engine can't start: No fuel injector"
         }
-
         val fuelQuality = fuelInjector.injectFuel()
-        if (fuelQuality > 70) {
-            condition = true
-            return "Starting Engine: It can travel very very fast and far"
-        } else if (fuelQuality > 40) {
-            condition = true
-            return "Starting Engine: It can travel fast and far"
-        } else if (fuelQuality > 0) {
-            condition = true
-            return "Starting Engine: It can travel in normal speed and distance"
-        } else {
-            return "Engine can't start: No fuel"
+        when {
+            fuelQuality > 70 -> return "Starting Engine: It can travel very very fast and far"
+            fuelQuality > 40 -> return "Starting Engine: It can travel fast and far"
+            fuelQuality > 0 -> return "Starting Engine: It can travel in normal speed and distance"
+            else -> return "Engine can't start: No fuel"
         }
     }
 

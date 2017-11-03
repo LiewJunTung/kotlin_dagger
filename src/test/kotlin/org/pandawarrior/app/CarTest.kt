@@ -5,7 +5,7 @@ import org.junit.Assert.assertEquals
 import org.pandawarrior.app.vehicle.engine.FuelInjector
 import org.pandawarrior.app.vehicle.engine.GoodEngine
 
-class FakeFuelInjector(val fakeFuel:Int): FuelInjector {
+class FakeFuelInjector(private val fakeFuel:Int): FuelInjector {
     override fun injectFuel(): Int {
         return fakeFuel
     }

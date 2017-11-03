@@ -34,7 +34,7 @@ class WeirdCar : Car {
 
     override fun drive() {
         println("\n${this.javaClass.simpleName} with ${gear.javaClass.simpleName} gear: ")
-        println(engine.start())
+        println(engine?.start())
     }
 }
 

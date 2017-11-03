@@ -1,10 +1,10 @@
 package org.pandawarrior.app
 
+import org.pandawarrior.app.dagger.DaggerCarMakerComponent
 import org.pandawarrior.app.vehicle.BadCar
 import org.pandawarrior.app.vehicle.GoodCar
 import org.pandawarrior.app.vehicle.WeirdCar
 import org.pandawarrior.app.vehicle.gear.ManualGear
-import org.pandawarrior.app.dagger.DaggerCarComponent
 import org.pandawarrior.app.vehicle.engine.Fuel
 import org.pandawarrior.app.vehicle.engine.FuelQuality
 import org.pandawarrior.app.vehicle.engine.GoodEngine
@@ -26,13 +26,13 @@ fun noDependencyInjection(){
 }
 
 fun daggerConstructorInjection(){
-    val normalCar = DaggerCarComponent.builder().build().normalCar()
+    val normalCar = DaggerCarMakerComponent.builder().build().normalCar()
     normalCar.drive()
 }
 
 fun daggerFieldInjection(){
     val weirdCar = WeirdCar()
-    DaggerCarComponent.builder()
+    DaggerCarMakerComponent.builder()
             .build()
             .weirdCar(weirdCar)
     weirdCar.drive()
